@@ -14,12 +14,7 @@ client.on('ready', () => {
     })
 })
 client.on("message", async message => {
-    if (!message) return
-    if (!message.author) return
-    if (message.author.bot) return
-    if (message.channel.type === "dm") return
-    if (message.channel.type === "unknown") return
-    if (!message.content.startsWith(prefix)) return
+    if (!message || !message.author || message.author.bot || message.channel.type === "dm" || message.channel.type === "unknown" || !message.content.startsWith(prefix)) return
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const commande = args.shift();
     
